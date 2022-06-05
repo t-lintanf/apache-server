@@ -11,7 +11,7 @@ RUN chmod 700 /home/thomas/.ssh
 RUN chmod 600 /home/thomas/.ssh/authorized_keys
 
 # apache server config
-COPY apache2.conf /etc/apache2/apache2.conf
+COPY apache2/ /etc/apache2/
 RUN mkdir /home/thomas/www
 RUN chown thomas:thomas /home/thomas/www
 RUN chmod 755 /home/thomas/www
@@ -20,5 +20,6 @@ STOPSIGNAL SIGWINCH
 COPY startup.sh /usr/local/bin/
 
 EXPOSE 80
+EXPOSE 443
 EXPOSE 22
 CMD ["startup.sh"]
